@@ -1,12 +1,182 @@
-// Import all of Bootstrap's CSS
 @import "~bootstrap/scss/bootstrap";
 
-header{
-    text-align: center;
-    padding: 30px;
-    color: red;
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffe066, #ff6f61); 
+  padding: 20px;
 }
 
-footer{
+
+header {
+  text-align: center;
+}
+
+#contenedorJuego {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#tituloJuego {
+    font-family: 'Arial Black', sans-serif; 
+    font-size: 48px;                        
+    text-align: center;                      
+    color: #ff4d4d;                           
+    text-shadow: 3px 3px 0 #ffe066, 6px 6px 0 #ffa500; 
+    margin: 20px 0;                          
+    letter-spacing: 2px;                     
+    transition: transform 0.3s;               
+}
+
+
+#tituloJuego:hover {
+    transform: scale(1.1) rotate(-2deg);    
+    cursor: pointer;
+}
+
+#juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  position: relative;
+}
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(7, 80px);
+    grid-template-rows: repeat(6, 80px);
+    width: 560px;   
+    height: 480px;  
+    background: url("img/tablero.svg") no-repeat center;
+    background-size: cover;
+    position: relative;
+    
+}
+
+.celda {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+#botons {
+    position: relative;
+    margin-left: 20px;
+    
+}
+.botoAnyadir{
+    width: 55px;
+    height: 90px;
+    margin-right: 25px;
+    background-color: transparent;
+    background-image: url("img/flechaa.png"); 
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border: none;
+    
+}
+
+.botoAnyadir:hover {
+    transform: scale(1.1);    
+    cursor: pointer;
+    filter: brightness(200%) drop-shadow(0 0 10px rgb(255, 0, 191));
+}
+
+#turno {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 0 #333;
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+
+.celda.atenuada {
+    filter: brightness(30%); 
+    transition: filter 0.5s;
+}
+
+
+.celda.ganadora {
+    filter: brightness(100%) drop-shadow(0 0 10px gold); 
+}
+
+#mensajeVictoria {
+    position: fixed;         /* se queda fijo aunque se haga scroll */
+    top: 50%;                /* 50% desde arriba */
+    left: 50%;               /* 50% desde la izquierda */
+    transform: translate(-50%, -50%); /* lo centra justo en medio */
+    
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 0 #333;
     text-align: center;
+    padding: 20px 40px;
+    border-radius: 12px;
+    background: rgba(0, 255, 251, 0.703); /* un fondo semitransparente bonito */
+    display: none;            /* oculto por defecto */
+    z-index: 9999;            /* encima de todo */
+}
+
+.botoReiniciarPartida{
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    background-image: url("../img/reiniciar.png");
+    background-color: transparent;
+    display: inline-block; 
+    background-size: cover;
+    background-position: center; 
+    border: none;
+    cursor: pointer;
+
+}
+
+#marcador {
+  position: absolute;
+  left: -325px;
+  top: 147px;
+  transform: translateY(-50%);
+  padding: 20px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 0 #333;
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  letter-spacing: 1px;
+  text-align: left;
+  min-width: 180px;
+}
+
+/* Colores para cada equipo */
+#marcador span.red {
+  padding-bottom: 10px;
+  color: #ff4d4d;
+  text-shadow: 2px 2px 0 #a60202;
+}
+
+#marcador span.yellow {
+  color: #ffe066;
+  text-shadow: 2px 2px 0 #b8860b;
 }

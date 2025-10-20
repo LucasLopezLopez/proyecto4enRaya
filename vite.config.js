@@ -10,5 +10,14 @@ export default {
   server: {
     port: 8080,
     hot: true
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'src/seleccionarJuego.html') 
+      }
+    }
   }
 }
+
+
